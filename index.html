@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf9f7">
+  <meta name="description" content="ReCan-GS uses Jacobian-derived uncertainty to separate transient distractors from dynamic 4D Gaussian reconstructions. Explore real-scene comparisons and interactive uncertainty visualizations. WACV 2027.">
+  <meta property="og:title" content="Reconstruct What You Can: Distractor-Free 4D Gaussian Splatting">
+  <meta property="og:description" content="ReCan-GS: Distractor-Free 4D Gaussian Splatting. WACV 2027.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/social-preview.png">
+  <title>Reconstruct What You Can: Distractor-Free 4D Gaussian Splatting</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg class="icon-definitions" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
+    <symbol id="i-paper" viewBox="0 0 24 24"><path d="M14 3H5v18h14V8l-5-5Zm0 0v6h5M8 13h8M8 17h6"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-14-2 18"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="ReCan-GS home"><span class="gaussian-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>ReCan-GS</a>
+      <div class="nav-links"><a href="#results">Results</a><a href="#method">Method</a><a href="#citation">Citation <span aria-hidden="true">↗</span></a></div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero page-shell" aria-labelledby="project-title">
+      <div class="venue"><span class="status-dot"></span> WACV 2027</div>
+      <h1 id="project-title" aria-label="Reconstruct What You Can: Distractor-Free 4D Gaussian Splatting"><span class="title-main">Reconstruct <span class="title-tail">What You Can</span></span><span class="title-subtitle">Distractor-Free 4D Gaussian Splatting</span></h1>
+      <div class="authors" aria-label="Authors">
+        <a href="https://joeljulin.github.io" target="_blank" rel="noopener" aria-label="Joel Julin, Carnegie Mellon University">Joel Julin<sup aria-hidden="true">1</sup></a>
+        <a href="https://spongepuddingg.github.io/louise-xie-personal/" target="_blank" rel="noopener" aria-label="Liuyue Xie, Carnegie Mellon University">Liuyue Xie<sup aria-hidden="true">1</sup></a>
+        <a href="https://ananyabal.github.io" target="_blank" rel="noopener" aria-label="Ananya Bal, Carnegie Mellon University">Ananya Bal<sup aria-hidden="true">1</sup></a>
+        <a href="https://mosesakashita.me" target="_blank" rel="noopener" aria-label="Mose Sakashita, Fujitsu">Mose Sakashita<sup aria-hidden="true">2</sup></a>
+        <a href="https://scholar.google.com/citations?user=AFaeUrYAAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="Koichiro Niinuma, Fujitsu">Koichiro Niinuma<sup aria-hidden="true">2</sup></a>
+        <a href="https://laszlojeni.com" target="_blank" rel="noopener" aria-label="Laszlo A. Jeni, Carnegie Mellon University">Laszlo A. Jeni<sup aria-hidden="true">1</sup></a>
+      </div>
+      <div class="affiliations" aria-label="Author affiliations">
+        <a class="affiliation" href="https://www.cmu.edu/" target="_blank" rel="noopener" aria-label="Affiliation 1: Carnegie Mellon University"><sup class="affiliation-number" aria-hidden="true">1</sup><span class="affiliation-logo"><img src="assets/cmu-logo.png" alt="Carnegie Mellon University logo" width="277" height="180"></span></a>
+        <a class="affiliation" href="https://www.fujitsu.com/us/about/businesspolicy/research/" target="_blank" rel="noopener" aria-label="Affiliation 2: Fujitsu"><sup class="affiliation-number" aria-hidden="true">2</sup><span class="affiliation-logo"><img src="assets/fujitsu-logo.png" alt="Fujitsu logo" width="370" height="180"></span></a>
+      </div>
+      <div class="resource-links">
+        <span class="resource unavailable" aria-label="Paper will be uploaded soon"><svg><use href="#i-paper"/></svg>Paper<span class="soon">soon</span></span>
+        <span class="resource unavailable" aria-label="Code will be released"><svg><use href="#i-code"/></svg>Code<span class="soon">soon</span></span>
+        <a class="resource" href="#citation">BibTeX<svg class="small"><use href="#i-arrow"/></svg></a>
+      </div>
+
+      <div id="results" class="results-explorer">
+        <div id="real-scene-panel" class="lead-comparisons" role="region" aria-label="Bottle three-way comparison">
+          <figure class="hero-result" id="hero-result-core" aria-label="Interactive reconstruction and uncertainty comparison">
+
+            <div id="comparison-panel" class="compare-stage three-way-stage" style="--split-first:33.3333333333%;--split-second:66.6666666667%">
+              <video id="compare-before" class="compare-video" src="assets/bottle-input.mp4" poster="assets/hero-bottle-input.webp" muted loop playsinline preload="auto" aria-label="Bottle input video"></video>
+              <div class="uncertainty-layer" id="uncertainty-layer"><video id="compare-uncertainty" class="compare-video" src="assets/bottle-uncertainty.mp4" poster="assets/hero-bottle-uncertainty.webp" muted loop playsinline preload="auto" aria-label="Bottle Jacobian uncertainty map"></video></div>
+              <div class="reconstruction-layer"><video id="compare-after" class="compare-video" src="assets/bottle-core.mp4" poster="assets/hero-bottle-core.webp" muted loop playsinline preload="auto" aria-label="Bottle ReCan-GS reconstruction"></video></div>
+              <span class="media-label region-label" id="before-label">Input video</span>
+              <span class="media-label region-label" id="jacobian-label"><span class="tiny-dot signal-dot"></span>Jacobian uncertainty</span>
+              <span class="media-label region-label" id="after-label"><span class="tiny-dot"></span>ReCan-GS</span>
+              <div class="region-line first-region-line" id="first-region-line" aria-hidden="true"></div>
+              <div class="region-line second-region-line" aria-hidden="true"></div>
+              <div id="first-divider" class="region-divider first-region-divider" role="slider" tabindex="0" data-boundary="first" aria-label="Input and Jacobian boundary" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="66.6667" aria-valuenow="33.3333"><span aria-hidden="true"><svg viewBox="0 0 28 28"><path d="m10 9-5 5 5 5m8-10 5 5-5 5M14 5v18"/></svg></span></div>
+              <div id="second-divider" class="region-divider second-region-divider" role="slider" tabindex="0" data-boundary="second" aria-label="Jacobian and reconstruction boundary" aria-orientation="horizontal" aria-valuemin="33.3333" aria-valuemax="100" aria-valuenow="66.6667"><span aria-hidden="true"><svg viewBox="0 0 28 28"><path d="m10 9-5 5 5 5m8-10 5 5-5 5M14 5v18"/></svg></span></div>
+              <span class="hero-map-legend" id="hero-map-legend"><span class="heatmap-key"></span>Lower → higher score</span>
+            </div>
+          </figure>
+          <div class="playback-bar paired-playback">
+            <button id="compare-play" class="icon-button" aria-label="Play comparison"><svg><use href="#i-play"/></svg></button>
+            <span class="timeline-label" id="compare-time">00:00</span>
+            <input id="compare-timeline" class="timeline" type="range" min="0" max="1000" value="0" aria-label="Comparison playback position">
+            <span class="timeline-label" id="compare-duration">00:18</span>
+            <span class="hero-sync-label" id="hero-sync-label">All three synchronized</span>
+            <label class="comparison-select" for="baseline-select"><span class="sr-only">Compare ReCan-GS against</span><select id="baseline-select"><option value="input">Input video</option><option value="deformable">DeformableGS</option><option value="4dgs">4DGS</option><option value="before">Before pruning</option></select></label>
+            <button class="icon-button hero-expand" data-expand-result="core" aria-label="Expand comparison" aria-pressed="false"><svg><use href="#i-expand"/></svg></button>
+          </div>
+          <p class="media-note" id="comparison-note">Drag the two dividers to resize Input, Jacobian uncertainty, and Reconstruction within the same view.</p>
+          <p class="media-error lead-comparison-error" id="compare-error" role="status" hidden>A video could not load. Reload the page to try again.</p>
+        </div>
+        <a class="more-results-link" href="#synthetic-results">More results <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <section class="abstract-section narrow-shell" aria-labelledby="abstract-title">
+      
+      <h2 id="abstract-title">Read the deformation.<br> Separate the distractions.</h2>
+      <p class="large-copy">A moving subject and a passing occluder can both move quickly. Rather than filtering by speed, ReCan-GS examines how its learned deformation field responds to position and time.</p>
+      <p><strong>Our key contribution is Jacobian-derived uncertainty.</strong> We turn variation among deformation gradients into a per-Gaussian sensitivity score. This signal guides separation into a dynamic <em>Core</em> and per-view <em>Distractor</em> layers, without pretrained segmenters or an external uncertainty network.</p>
+      <details class="abstract-details"><summary>Read the full abstract <span aria-hidden="true">+</span></summary><p>Dynamic 4D reconstruction from casual video faces a fundamental question: what should the model reconstruct, and what should it refuse to explain? Real-world sequences contain occluders, reflections, shadows, flicker, and evolving volumetric media that violate the assumptions of a single coherent 4D scene model. Existing methods either suppress valid motion through static-scene assumptions or model every observation jointly, causing ghosting, unstable geometry, and corrupted dynamics. We introduce ReCan-GS, a reconstructability-routed 4D Gaussian Splatting framework that separates coherent scene content from observations that induce inconsistent deformation constraints. Instead of detecting distractors by appearance, semantics, photometric error, or speed, ReCan-GS derives a Jacobian-based uncertainty score directly from the learned deformation field. This analytic signal routes geometrically and temporally consistent observations into a persistent 4D scene representation, while isolating high-uncertainty residuals before they contaminate the reconstruction. A single deformation-space criterion handles spatial occluders, photometric artifacts, and temporally evolving smoke or fog without masks, pretrained segmenters, or medium-specific supervision. Experiments on synthetic and real dynamic scenes, together with dynamic smoke/fog removal in static scenes, show that a single deformation-space criterion supports clean reconstruction across diverse distractor regimes.</p></details>
+    </section>
+
+    <section id="method" class="method-section page-shell" aria-labelledby="method-title">
+      <div class="section-heading"><div><h2 id="method-title">How it works.</h2></div><p>Jacobian uncertainty guides the separation<br> of coherent dynamics and transient content.</p></div>
+      <figure class="pipeline-figure">
+        <div class="pipeline-viewport"><a href="assets/pipeline.png" target="_blank" rel="noopener" aria-label="Enlarge the pipeline figure in full resolution"><img src="assets/pipeline.webp" alt="ReCan-GS pipeline from Figure 2 of the paper: a deformation MLP models dynamic Core Gaussians, per-view Distractor Gaussians explain transient observations, and deformation uncertainty guides the training loss." width="3891" height="1177" loading="lazy"></a></div>
+        <figcaption>A shared deformation model represents the dynamic <strong>Core</strong>. Per-view <strong>Distractor</strong> Gaussians explain transient content, with Jacobian-derived uncertainty guiding the separation.</figcaption>
+      </figure>
+      <div class="pipeline-footer"><span>Figure 2 from the paper.<span class="pipeline-expand-hint"> Tap the figure to enlarge.</span></span><a href="assets/pipeline.png" target="_blank" rel="noopener">Open full resolution <span aria-hidden="true">↗</span></a></div>
+      <div class="method-explanation"><p><strong>Differentiate the deformation.</strong> The Jacobian captures how learned position, rotation, and scale offsets respond to canonical position and time. Gradient covariance provides a per-Gaussian sensitivity score.</p><p><strong>Route or prune with that score.</strong> Regularize uncertain, opaque Core Gaussians during training, or prune high-scoring Gaussians afterward.</p><p><strong>No extra model at render time.</strong> Only the retained Core is rendered. The Jacobian computation is a training-time cost.</p></div>
+      <p class="fine-print">The Jacobian score is an empirical proxy for deformation instability. Stable distractors may remain, and poorly observed valid motion may be removed.</p>
+    </section>
+
+    <section id="jacobian" class="page-shell evidence-section" aria-labelledby="evidence-title">
+      <div class="section-heading"><div><h2 id="evidence-title">Jacobian-derived uncertainty.</h2></div><p>A model-internal cue for deformation instability.<br> Different from motion magnitude alone.</p></div>
+      <p class="signal-intro">The score summarizes variation among gradients of the learned deformation offsets. Brighter regions have higher Jacobian scores. In this experiment, the signal localizes the transient more selectively than raw motion magnitude.</p>
+      <div class="signal-comparison"><figure><div class="signal-video"><video id="signal-motion" data-lazy-src="assets/bottle-motion.mp4" poster="assets/bottle-motion.webp" muted playsinline loop preload="none" aria-label="Motion magnitude highlights valid movement and distractors"></video><span class="media-label">Motion magnitude</span></div><figcaption><span>Distractor localization IoU</span><strong>0.284</strong></figcaption></figure><figure class="ours-signal"><div class="signal-video"><video id="signal-jacobian" data-lazy-src="assets/bottle-jacobian.mp4" poster="assets/bottle-jacobian.webp" muted playsinline loop preload="none" aria-label="Jacobian score more selectively highlights the transient distractor"></video><span class="media-label"><span class="tiny-dot"></span> Jacobian uncertainty</span></div><figcaption><span>Distractor localization IoU</span><strong>0.532</strong></figcaption></figure></div>
+      <div class="signal-scrubber"><label for="signal-timeline">Explore a moment</label><input id="signal-timeline" class="timeline" type="range" min="0" max="100" value="0" aria-label="Signal comparison playback position"><output id="signal-time">00:00 / 00:10</output></div>
+      <div class="signal-caption-row"><p class="figure-caption">On 534 distractor-containing Bottle frames, the Jacobian score better localizes the transient than motion magnitude. SAM masks are used for evaluation only.</p><button id="signal-play" class="animation-control" aria-label="Pause uncertainty animation"><svg><use href="#i-pause"/></svg><span>Pause animation</span></button></div>
+      <details class="score-details"><summary>How is the score computed? <span aria-hidden="true">+</span></summary><div class="score-derivation"><p>For each Core Gaussian, differentiate the predicted position, rotation, and scale offsets with respect to canonical position and time. For each offset type, take the trace of the sample covariance of the Jacobian’s rows, then sum the three contributions.</p><div class="score-equation" aria-label="U of g equals the trace of the covariance of the position Jacobian, plus the rotation Jacobian, plus the scale Jacobian"><var>U</var>(g) = tr Cov(J<sub>Δμ</sub>) + tr Cov(J<sub>Δq</sub>) + tr Cov(J<sub>Δs</sub>)</div><p class="fine-print">This is a sensitivity-based routing signal, not a calibrated probability of being a distractor. Stable transients and poorly observed valid motion remain challenging.</p></div></details>
+
+      <div class="coverage-study"><div class="coverage-heading"><div><h3>More views. Less ambiguity.</h3><p>A controlled test of camera coverage and motion speed.</p></div><div class="segmented-control" role="group" aria-label="Ball motion speed"><button data-speed="slow" aria-pressed="false">Slow motion</button><button data-speed="fast" aria-pressed="true">Fast motion</button></div></div>
+        <div class="coverage-explanation"><p>Each column shows a reconstruction using one, two, or three camera views of the moving ball. The colors show the Jacobian-derived score: dark regions have lower uncertainty, while brighter regions have higher scores.</p><p>A single view leaves more possible 3D motions consistent with the images. Additional views constrain the learned deformation, and the score generally decreases, even when the ball moves quickly. This experiment helps distinguish the effect of limited visual support from motion speed alone.</p><p class="coverage-instruction"><strong>Try it:</strong> Select slow or fast motion, then drag the slider to compare the same moment across all three reconstructions.</p></div>
+        <div class="coverage-grid"><figure><img id="coverage-1" src="assets/coverage/1-fast/001.webp" alt="Fast ball uncertainty from one camera" width="400" height="400" loading="lazy"><figcaption><span class="camera-dots" aria-hidden="true">●</span>1 camera</figcaption></figure><figure><img id="coverage-2" src="assets/coverage/2-fast/001.webp" alt="Fast ball uncertainty from two cameras" width="400" height="400" loading="lazy"><figcaption><span class="camera-dots" aria-hidden="true">● ●</span>2 cameras</figcaption></figure><figure><img id="coverage-3" src="assets/coverage/3-fast/001.webp" alt="Fast ball uncertainty from three cameras" width="400" height="400" loading="lazy"><figcaption><span class="camera-dots" aria-hidden="true">● ● ●</span>3 cameras</figcaption></figure></div>
+        <div class="coverage-controls"><span class="legend"><span class="heatmap-key"></span>Lower → higher uncertainty</span><label for="coverage-frame" class="sr-only">Camera coverage experiment frame</label><input id="coverage-frame" class="timeline" type="range" min="1" max="149" value="1"><output id="coverage-count">001 / 149</output></div>
+      </div>
+    </section>
+
+    <section class="smoke-band" id="smoke" aria-labelledby="smoke-title">
+      <div class="page-shell smoke-layout">
+        <div class="smoke-copy"><h2 id="smoke-title">See through<br> the smoke.</h2><p>Even slowly evolving smoke can be inconsistent across views. The same Jacobian-derived uncertainty signal helps recover the underlying static object. Inspect the assigned uncertainty alongside the smoky input, or switch to the cleaned reconstruction.</p><div class="smoke-scenes" role="group" aria-label="Smoke scene"><button class="selected" data-smoke="car" aria-pressed="true">Muscle car</button><button data-smoke="chair" aria-pressed="false">Chair</button><button data-smoke="hotdog" aria-pressed="false">Hotdog</button><button data-smoke="lego" aria-pressed="false">Lego</button></div><p class="smoke-footnote">Actual reconstructions on four synthetic SmokeSeer scenes. Residual haze and reconstruction errors remain.</p></div>
+        <div class="smoke-demo">
+          <div class="smoke-toolbar"><div class="segmented-control" role="group" aria-label="Smoke display"><button id="smoke-compare" aria-pressed="false">Compare</button><button id="smoke-uncertainty" aria-pressed="true">Uncertainty</button><button id="smoke-sweep" aria-pressed="false">Explore pruning</button></div><span class="smoke-scene-name" id="smoke-scene-name">Muscle car</span></div>
+          <div class="smoke-pair" id="smoke-pair"><figure><video id="smoke-input" data-lazy-src="assets/smoke-car-input.mp4" poster="assets/smoke-car-input.webp" muted playsinline loop preload="none" aria-label="Muscle car with smoke"></video><figcaption>With smoke</figcaption></figure><figure><video id="smoke-core" data-lazy-src="assets/smoke-car-uncertainty.mp4" poster="assets/smoke-car-uncertainty.webp" muted playsinline loop preload="none" aria-label="Muscle car Jacobian uncertainty"></video><span id="smoke-score-key" class="smoke-score-key"><span class="heatmap-key"></span>Low → high</span><figcaption><span id="smoke-result-dot" class="tiny-dot signal-dot"></span><span id="smoke-result-label">Jacobian uncertainty</span></figcaption></figure></div>
+          <div class="smoke-sweep-view" id="smoke-sweep-view" hidden><img id="smoke-sweep-image" src="assets/sweeps/car/16.webp" alt="Recorded Muscle car reconstruction at the selected pruning setting" loading="lazy" width="800" height="800"><span class="sweep-badge">Recorded threshold sweep</span></div>
+          <div class="smoke-bottom"><p id="smoke-instruction">Brighter colors indicate higher Jacobian scores. Compare the uncertainty map with the visible smoke at the same moment.</p><button id="smoke-play" class="icon-button" aria-label="Pause smoke comparison"><svg><use href="#i-pause"/></svg></button></div>
+          <div id="smoke-pruning-control" class="pruning-control" hidden><label for="smoke-pruning">Pruning strength <output id="pruning-output">Balanced</output></label><input id="smoke-pruning" class="timeline" type="range" min="0" max="32" value="16"><div><span>Conservative</span><span>Aggressive</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="synthetic-results" class="synthetic-section page-shell" aria-labelledby="synthetic-title">
+      <div class="section-heading"><div><h2 id="synthetic-title">More dynamic scenes.</h2></div><p>Compare real and synthetic sequences<br> with dynamic reconstruction baselines.</p></div>
+      <div class="synthetic-explorer">
+        <div class="explorer-topline">
+          <div class="synthetic-tabs scene-tabs" role="tablist" aria-label="Additional scene">
+            <button id="synthetic-jeep" role="tab" aria-selected="true" aria-controls="synthetic-panel" data-synthetic="jeep">Jeep</button>
+            <button id="synthetic-squat" role="tab" aria-selected="false" aria-controls="synthetic-panel" data-synthetic="squat" tabindex="-1">Squatting</button>
+            <button id="synthetic-balls" role="tab" aria-selected="false" aria-controls="synthetic-panel" data-synthetic="balls" tabindex="-1">Bouncing Balls</button>
+          </div>
+          <label class="comparison-select" for="synthetic-baseline"><span class="sr-only">Additional comparison baseline</span><select id="synthetic-baseline"><option value="deformable">DeformableGS</option><option value="4dgs">4DGS</option></select></label>
+        </div>
+        <div id="synthetic-panel" class="synthetic-pair" role="tabpanel" aria-labelledby="synthetic-jeep">
+          <figure><div class="synthetic-video"><video id="synthetic-before" data-lazy-src="assets/jeep-deformable.mp4" poster="assets/jeep-deformable.webp" muted loop playsinline preload="none" aria-label="Jeep DeformableGS reconstruction"></video></div><figcaption id="synthetic-before-label">DeformableGS</figcaption></figure>
+          <figure><div class="synthetic-video"><video id="synthetic-after" data-lazy-src="assets/jeep-core.mp4" poster="assets/jeep-core.webp" muted loop playsinline preload="none" aria-label="Jeep ReCan-GS reconstruction"></video></div><figcaption><span class="tiny-dot"></span><span id="synthetic-result-label">ReCan-GS</span></figcaption></figure>
+        </div>
+        <div class="playback-bar synthetic-playback">
+          <button id="synthetic-play" class="icon-button" aria-label="Play scene comparison"><svg><use href="#i-play"/></svg></button>
+          <span class="timeline-label" id="synthetic-time">00:00</span>
+          <input id="synthetic-timeline" class="timeline" type="range" min="0" max="1000" value="0" aria-label="Additional scene playback position">
+          <span class="timeline-label" id="synthetic-duration">00:20</span>
+          <span class="synthetic-sync">Synchronized views</span>
+        </div>
+        <p class="media-note" id="synthetic-note">Matched reconstruction views of a stop-motion Jeep. ReCan-GS removes transient hands and reduces moving-shadow artifacts. Choose DeformableGS or 4DGS to compare the same viewpoint.</p>
+        <p class="media-error synthetic-error" id="synthetic-error" role="status" hidden>This video could not load. Try another scene or reload the page.</p>
+      </div>
+    </section>
+
+    <section class="quantitative-section page-shell" aria-labelledby="quantitative-title">
+      <div class="section-heading"><div><h2 id="quantitative-title">Cleaner scenes.<br> A measurable trade-off.</h2></div><p>Reconstruction quality and distractor retention<br> measure different parts of the problem.</p></div>
+      <div class="numbers-layout"><div class="numbers-copy"><p>ReCan-GS leads DeformableGS on two of four dynamic scenes and trails on two. The larger distinction is how much transient content remains in the reconstruction.</p><p class="numbers-emphasis"><strong>0%</strong><span>of human ratings found a substantial<br> distractor in the ReCan-GS Jeep renders.</span></p><p class="fine-print">Three annotators, 50 frames per method. “Substantial” means a severity rating ≥ 3 on a 1–5 scale. This evaluates retained distractors, not target completeness.</p></div>
+        <div class="results-table-wrap"><div class="table-top"><span>Dynamic-scene reconstruction</span><label><span class="sr-only">Reconstruction quality metric</span><select id="metric-select"><option value="psnr">PSNR ↑</option><option value="ssim">SSIM ↑</option><option value="lpips">LPIPS ↓</option></select></label></div><table id="results-table"><caption class="sr-only">Reconstruction quality across four dynamic scenes</caption><thead><tr><th scope="col">Scene</th><th scope="col">DeformableGS</th><th scope="col">4DGS</th><th scope="col">ReCan-GS</th></tr></thead><tbody></tbody></table><p class="table-note">Best result in each row is highlighted. Real-scene metrics use distractor-free holdouts. Table 2 in the paper.</p></div>
+      </div>
+    </section>
+
+    <section id="citation" class="citation-section narrow-shell" aria-labelledby="citation-title"><div class="citation-header"><div><h2 id="citation-title">Citation</h2></div><button id="copy-citation" class="resource"><svg><use href="#i-copy"/></svg><span>Copy BibTeX</span></button></div><pre><code id="bibtex">@inproceedings{julin2027recan,
+  title     = {Reconstruct What You Can: Distractor-Free
+               4D Gaussian Splatting},
+  author    = {Julin, Joel and Xie, Liuyue and Bal, Ananya and
+               Sakashita, Mose and Niinuma, Koichiro and
+               Jeni, Laszlo A.},
+  booktitle = {Proceedings of the IEEE/CVF Winter Conference
+               on Applications of Computer Vision (WACV)},
+  year      = {2027}
+}</code></pre><p class="citation-subtitle">ReCan-GS · Reconstruct What You Can</p><p id="copy-status" class="sr-only" role="status" aria-live="polite"></p></section>
+  </main>
+
+  <footer class="site-footer page-shell"><a class="brand" href="#"><span class="gaussian-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>ReCan-GS</a><p>WACV 2027</p><a href="https://nerfies.github.io/" target="_blank" rel="noopener">Inspired by NeRFies <span aria-hidden="true">↗</span></a></footer>
+  <noscript><div class="noscript-note">Enable JavaScript for synchronized comparisons and interactive experiments. The paper and supplementary PDF remain available above.</div></noscript>
+</body>
+</html>
